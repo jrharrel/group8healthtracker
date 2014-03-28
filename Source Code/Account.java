@@ -6,10 +6,11 @@ public class Account
 	private String _password;
 	private int _ID;
 	
-	public Account()
+	public Account( String accountName , String password , int ID)
 	{
-		_accountName = "";
-		_password = "";
+		_accountName = accountName;
+		_password = password;
+		_ID = ID;
 	}
 	
 	public String getAccountName()
@@ -42,9 +43,9 @@ public class Account
 	
 	public String toString()
 	{
-		return "Account Name:" + _accountName + "\n" + 
-	           "Password:    " + _password + "\n" + 
-			   "ID:          " + _ID + "\n";
+		return "Account Name: " + _accountName + "\n" + 
+	           "Password:     " + _password + "\n" + 
+			   "ID:           " + _ID + "\n";
 			 
 	}
 	

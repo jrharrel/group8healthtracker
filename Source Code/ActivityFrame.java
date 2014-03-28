@@ -5,6 +5,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -27,6 +28,7 @@ import java.awt.Component;
 import javax.swing.Box;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
+import javax.swing.JMenu;
 
 public class ActivityFrame extends JFrame 
 {	
@@ -55,80 +57,76 @@ public class ActivityFrame extends JFrame
 		getContentPane().setLayout(null);
 		
 		JLabel lblWorkHours = new JLabel("Work Hours");
-		lblWorkHours.setBounds(30, 63, 114, 14);
+		lblWorkHours.setBounds(30, 72, 114, 14);
 		getContentPane().add(lblWorkHours);
 		
 		JLabel lblSleepHours = new JLabel("Sleep Hours");
-		lblSleepHours.setBounds(30, 93, 114, 14);
+		lblSleepHours.setBounds(30, 102, 114, 14);
 		getContentPane().add(lblSleepHours);
 		
 		JLabel lblCardioInMinutes = new JLabel("Cardio in minutes");
-		lblCardioInMinutes.setBounds(30, 123, 114, 14);
+		lblCardioInMinutes.setBounds(30, 132, 114, 14);
 		getContentPane().add(lblCardioInMinutes);
 		
 		JLabel lblStrengthTraining = new JLabel("Strength Training");
-		lblStrengthTraining.setBounds(30, 153, 130, 14);
+		lblStrengthTraining.setBounds(30, 162, 130, 14);
 		getContentPane().add(lblStrengthTraining);
 		
 		JLabel lblBloodPressure = new JLabel("Blood Pressure");
-		lblBloodPressure.setBounds(30, 246, 96, 14);
+		lblBloodPressure.setBounds(30, 279, 96, 14);
 		getContentPane().add(lblBloodPressure);
 		
 		JLabel lblPulseRate = new JLabel("Blood Sugar");
-		lblPulseRate.setBounds(30, 276, 96, 14);
+		lblPulseRate.setBounds(30, 309, 96, 14);
 		getContentPane().add(lblPulseRate);
 		
 		JLabel lblCalorieIntake = new JLabel("Pulse Rate");
-		lblCalorieIntake.setBounds(30, 306, 96, 14);
+		lblCalorieIntake.setBounds(30, 339, 96, 14);
 		getContentPane().add(lblCalorieIntake);
 		
 		JLabel lblWeight = new JLabel("Calorie Intake");
-		lblWeight.setBounds(30, 336, 96, 14);
+		lblWeight.setBounds(30, 369, 96, 14);
 		getContentPane().add(lblWeight);
 		
 		txtWorkHours = new JTextField();
-		txtWorkHours.setBounds(144, 60, 86, 20);
+		txtWorkHours.setBounds(144, 69, 86, 20);
 		getContentPane().add(txtWorkHours);
 		txtWorkHours.setColumns(10);
 		
 		txtSleepHours = new JTextField();
-		txtSleepHours.setBounds(145, 90, 86, 20);
+		txtSleepHours.setBounds(145, 99, 86, 20);
 		txtSleepHours.setColumns(10);
 		getContentPane().add(txtSleepHours);
 		
 		txtCardioInMinutes = new JTextField();
-		txtCardioInMinutes.setBounds(145, 120, 86, 20);
+		txtCardioInMinutes.setBounds(145, 129, 86, 20);
 		txtCardioInMinutes.setColumns(10);
 		getContentPane().add(txtCardioInMinutes);
 		
 		txtStrengthTraining = new JTextField();
-		txtStrengthTraining.setBounds(144, 150, 86, 20);
+		txtStrengthTraining.setBounds(144, 159, 86, 20);
 		txtStrengthTraining.setColumns(10);
 		getContentPane().add(txtStrengthTraining);
 		
 		txtBloodPressure = new JTextField();
-		txtBloodPressure.setBounds(144, 243, 86, 20);
+		txtBloodPressure.setBounds(144, 276, 86, 20);
 		txtBloodPressure.setColumns(10);
 		getContentPane().add(txtBloodPressure);
 		
 		txtBloodSugar = new JTextField();
-		txtBloodSugar.setBounds(144, 273, 86, 20);
+		txtBloodSugar.setBounds(144, 306, 86, 20);
 		txtBloodSugar.setColumns(10);
 		getContentPane().add(txtBloodSugar);
 		
 		txtPulseRate = new JTextField();
-		txtPulseRate.setBounds(145, 303, 86, 20);
+		txtPulseRate.setBounds(145, 336, 86, 20);
 		txtPulseRate.setColumns(10);
 		getContentPane().add(txtPulseRate);
 		
 		txtCalorieIntake = new JTextField();
-		txtCalorieIntake.setBounds(144, 333, 86, 20);
+		txtCalorieIntake.setBounds(144, 366, 86, 20);
 		txtCalorieIntake.setColumns(10);
 		getContentPane().add(txtCalorieIntake);
-		
-		JButton btnSubmitAll = new JButton("Submit All");
-		btnSubmitAll.setBounds(121, 414, 109, 23);
-		getContentPane().add(btnSubmitAll);
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("");
 		chckbxNewCheckBox.setBounds(393, 32, 28, 23);
@@ -195,12 +193,12 @@ public class ActivityFrame extends JFrame
 		getContentPane().add(checkBox_6);
 		
 		txtWeight = new JTextField();
-		txtWeight.setBounds(144, 363, 86, 20);
+		txtWeight.setBounds(144, 396, 86, 20);
 		txtWeight.setColumns(10);
 		getContentPane().add(txtWeight);
 		
 		JLabel label_6 = new JLabel("Weight");
-		label_6.setBounds(30, 363, 76, 14);
+		label_6.setBounds(30, 396, 76, 14);
 		getContentPane().add(label_6);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Day");
@@ -231,43 +229,83 @@ public class ActivityFrame extends JFrame
 		radioButton_2.setBounds(397, 188, 65, 23);
 		getContentPane().add(radioButton_2);
 		
-		JButton btnGraphActivities = new JButton("Graph");
-		btnGraphActivities.setBounds(450, 151, 89, 23);
-		getContentPane().add(btnGraphActivities);
-		
-		JButton btnGraphHealthIndicators = new JButton("Graph");
-		btnGraphHealthIndicators.setBounds(450, 375, 89, 23);
-		getContentPane().add(btnGraphHealthIndicators);
-		
 		Component horizontalStrut = Box.createHorizontalStrut(20);
 		horizontalStrut.setBounds(260, 225, 350, 12);
 		getContentPane().add(horizontalStrut);
 		
 		JLabel lblNewLabel_2 = new JLabel("Health Indicators");
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.ITALIC, 15));
-		lblNewLabel_2.setBounds(30, 206, 130, 14);
+		lblNewLabel_2.setBounds(30, 239, 130, 14);
 		getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblActivities = new JLabel("Activities");
 		lblActivities.setFont(new Font("Times New Roman", Font.ITALIC, 15));
-		lblActivities.setBounds(30, 22, 76, 14);
+		lblActivities.setBounds(30, 31, 76, 14);
 		getContentPane().add(lblActivities);
 		
-		JButton btnNewButton_2 = new JButton("Sign Out");
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnNewMenu = new JMenu("   File");
+		menuBar.add(mnNewMenu);
+		
+		JMenuItem submitAllMenuItem = new JMenuItem("  Submit All");
+		submitAllMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{// action to submit data
+				
+				JOptionPane.showMessageDialog ( 
+						   null, "You have successfully submitted all of your data." ); 
+				
 			}
 		});
-		btnNewButton_2.setBounds(485, 427, 89, 23);
-		getContentPane().add(btnNewButton_2);
+		mnNewMenu.add(submitAllMenuItem);
+		
+		JMenuItem graphActivitiesMenuItem = new JMenuItem("  Graph Activities");
+		mnNewMenu.add(graphActivitiesMenuItem);
+		
+		JMenuItem graphHealthIndicatorsMenuItem = new JMenuItem("  Graph Health Indicators");
+		mnNewMenu.add(graphHealthIndicatorsMenuItem);
+		
+		JMenuItem printPreviewMenuItem = new JMenuItem("  Print Preview");
+		printPreviewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				PrintPreviewFrame preview = new PrintPreviewFrame();
+				preview.start();
+			}
+		});
+		printPreviewMenuItem.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+		mnNewMenu.add(printPreviewMenuItem);
+		
+		JMenuItem signOutMenuItem = new JMenuItem("  Sign Out");
+		signOutMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				SignInFrame.setUserCurrentlyLoggedIN("");
+				
+				SignInFrame newFrame = new SignInFrame();
+				newFrame.start();
+				
+				dispose();
+			}
+		});
+		mnNewMenu.add(signOutMenuItem);
+		
+		JMenuItem menuItem = new JMenuItem("");
+		menuBar.add(menuItem);
 		
 		currentPanel = new StringPanel();
 	}
 	
 	public void start()
 	{
-		this.setLocation(650, 300);
-		this.setSize(577,500);
+		this.setLocation(300, 150);
+		this.setSize(595,529);
 		this.setVisible(true);
 	}
 	private class SwingAction extends AbstractAction {

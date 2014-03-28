@@ -1,17 +1,13 @@
 package create.gui;
 
-public class calculatorMain {
-
+public class Driver 
+{
 	public static void main(String[] args)
 	{
-		StringFrame frame = new StringFrame();
+		SignInFrame frame = new SignInFrame();
 		frame.start();
 		
-	
-		
-		
-		
-		
 	}
-
+	
 }
+
