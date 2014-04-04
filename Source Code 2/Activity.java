@@ -25,7 +25,7 @@ public class Activity
 	}
 	public double getCardio()
 	{
-		return _workHours;
+		return _cardioInMinutes;
 	}
 	public double getStrengthTraining()
 	{

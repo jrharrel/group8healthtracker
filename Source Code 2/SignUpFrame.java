@@ -217,12 +217,17 @@ public class SignUpFrame extends JFrame
 		this.setSize(530,250);
 		this.setVisible(true);
 	}
-	private class SwingAction extends AbstractAction {
-		public SwingAction() {
+
+	private class SwingAction extends AbstractAction 
+	{
+		public SwingAction() 
+		{
 			putValue(NAME, "SwingAction");
 			putValue(SHORT_DESCRIPTION, "Some short description");
 		}
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e) 
+		{
+			
 		}
 	}
 }

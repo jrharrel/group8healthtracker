@@ -46,11 +46,13 @@ public class ActivityFrame extends JFrame
 	private JTextField txtSleepHours;
 	private JTextField txtCardioInMinutes;
 	private JTextField txtStrengthTraining;
-	private JTextField txtBloodPressure;
 	private JTextField txtBloodSugar;
 	private JTextField txtPulseRate;
 	private JTextField txtCalorieIntake;
 	private JTextField txtWeight;
+	private JTextField txtSystolic;
+	private JTextField txtDiastolic;
+	
 	
 	public ActivityFrame() 
 	{
@@ -71,10 +73,6 @@ public class ActivityFrame extends JFrame
 		JLabel lblStrengthTraining = new JLabel("Strength Training");
 		lblStrengthTraining.setBounds(30, 162, 130, 14);
 		getContentPane().add(lblStrengthTraining);
-		
-		JLabel lblBloodPressure = new JLabel("Blood Pressure");
-		lblBloodPressure.setBounds(30, 279, 96, 14);
-		getContentPane().add(lblBloodPressure);
 		
 		JLabel lblPulseRate = new JLabel("Blood Sugar");
 		lblPulseRate.setBounds(30, 309, 96, 14);
@@ -107,11 +105,6 @@ public class ActivityFrame extends JFrame
 		txtStrengthTraining.setBounds(144, 159, 86, 20);
 		txtStrengthTraining.setColumns(10);
 		getContentPane().add(txtStrengthTraining);
-		
-		txtBloodPressure = new JTextField();
-		txtBloodPressure.setBounds(144, 276, 86, 20);
-		txtBloodPressure.setColumns(10);
-		getContentPane().add(txtBloodPressure);
 		
 		txtBloodSugar = new JTextField();
 		txtBloodSugar.setBounds(144, 306, 86, 20);
@@ -235,13 +228,35 @@ public class ActivityFrame extends JFrame
 		
 		JLabel lblNewLabel_2 = new JLabel("Health Indicators");
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.ITALIC, 15));
-		lblNewLabel_2.setBounds(30, 239, 130, 14);
+		lblNewLabel_2.setBounds(30, 233, 130, 14);
 		getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblActivities = new JLabel("Activities");
 		lblActivities.setFont(new Font("Times New Roman", Font.ITALIC, 15));
 		lblActivities.setBounds(30, 31, 76, 14);
 		getContentPane().add(lblActivities);
+		
+		txtSystolic = new JTextField();
+		txtSystolic.setColumns(10);
+		txtSystolic.setBounds(144, 275, 40, 20);
+		getContentPane().add(txtSystolic);
+		
+		txtDiastolic = new JTextField();
+		txtDiastolic.setColumns(10);
+		txtDiastolic.setBounds(190, 275, 40, 20);
+		getContentPane().add(txtDiastolic);
+		
+		JLabel label_2 = new JLabel("Blood Pressure");
+		label_2.setBounds(30, 278, 96, 14);
+		getContentPane().add(label_2);
+		
+		JLabel lblSys = new JLabel("Sys");
+		lblSys.setBounds(154, 258, 28, 14);
+		getContentPane().add(lblSys);
+		
+		JLabel lblDia = new JLabel("Dia");
+		lblDia.setBounds(197, 259, 28, 14);
+		getContentPane().add(lblDia);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -250,14 +265,51 @@ public class ActivityFrame extends JFrame
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem submitAllMenuItem = new JMenuItem("  Submit All");
+		
+		
+		
+		
+		
+		
 		submitAllMenuItem.addActionListener(new ActionListener() {
+			
+			
+			
+			
 			public void actionPerformed(ActionEvent arg0) 
 			{// action to submit data
 				
 				JOptionPane.showMessageDialog ( 
 						   null, "You have successfully submitted all of your data." ); 
+			
+				// This variable is used to know which user is currently logged in 
+				// for writing the data to the correct users text file.
+				String userLoggedIn = SignInFrame.getUserCurrentlyLoggedIN();
+			
 				
+				SubmitData newSubmitDataObject = new SubmitData( userLoggedIn ,
+						                                       123, 
+						                                    checkString(txtDiastolic),
+						                       				checkString(txtSystolic),
+						                       				checkString(txtBloodSugar),
+						                       				checkString(txtPulseRate),
+						                       				checkString(txtCalorieIntake),
+						                       				checkString(txtWeight),
+						                       				checkString(txtWorkHours),
+						                       				checkString(txtSleepHours),
+						                       				checkString(txtCardioInMinutes),
+						                       				checkString(txtStrengthTraining) );
+				// send this record to DataBase
+			
+				System.out.println(newSubmitDataObject);
 			}
+			
+			
+			
+			
+			
+			
+			
 		});
 		mnNewMenu.add(submitAllMenuItem);
 		
@@ -307,6 +359,22 @@ public class ActivityFrame extends JFrame
 		this.setLocation(300, 150);
 		this.setSize(595,529);
 		this.setVisible(true);
+	}
+	
+	public double checkString(JTextField fieldSent){
+		double blank = -1.0;
+		if(fieldSent.getText().equals("")) {
+	        return blank;
+	    }else {
+	    	
+	    	try {
+	    		return Double.parseDouble( fieldSent.getText() );
+	    	} catch (NumberFormatException e) {
+	    	    
+	    	    return -1;
+	    	}
+	    	
+	    }
 	}
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {

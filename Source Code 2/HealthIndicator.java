@@ -2,7 +2,8 @@ package create.gui;
 
 public class HealthIndicator 
 {
-	private double _bloodPressure;
+	private double _diastolic;
+	private double _systolic;
 	private double _bloodSugar;
 	private double _pulseRate;
 	private double _calorieIntake;
@@ -10,17 +11,24 @@ public class HealthIndicator
 
 	public HealthIndicator()
 	{
-		_bloodPressure = 0.0;
+		_diastolic = 0.0;
+		_systolic = 0.0;
 		_bloodSugar = 0.0;
 		_pulseRate = 0.0;
 		_calorieIntake = 0.0;
 		_weight = 0.0;
 	}
 	
-	public double getBloodPressure()
+	public double getDiastolic()
 	{
-		return _bloodPressure;
+		return _diastolic ;
 	}
+	
+	public double getSystolic()
+	{
+		return _systolic ;
+	}
+	
 	public double getBloodSugar()
 	{
 		return _bloodSugar;
@@ -38,9 +46,14 @@ public class HealthIndicator
 		return _weight;
 	}
 	
-	public void setBloodPressure( double newBloodPressure )
+	public void setSystolic( double newSystolic )
 	{
-		_bloodPressure = newBloodPressure;
+		_systolic = newSystolic;
+	}
+	
+	public void setDiastolic( double newDiastolic )
+	{
+		_diastolic = newDiastolic;
 	}
 	
 	public void setBloodSugar( double newBloodSugar )
@@ -65,8 +78,8 @@ public class HealthIndicator
 	
 	public String toString()
 	{
-		return "Blood Pressure:   " + _bloodPressure + "\n" + 
-	           "Blood Sugar:      " + _bloodSugar + "\n" + 
+		return "Blood Pressure:   " + _systolic + " \\ " + _diastolic + "\n" + 
+			   "Blood Sugar:      " + _bloodSugar + "\n" + 
 			   "Pulse Rate:       " + _pulseRate + "\n" + 
 	           "Calorie Intake:   " + _calorieIntake + "\n"+
 	           "Weight:           " + _weight + "\n";
