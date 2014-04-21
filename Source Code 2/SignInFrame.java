@@ -9,19 +9,24 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
+
 import java.awt.event.InputMethodListener;
 import java.awt.event.InputMethodEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -37,8 +42,6 @@ import java.util.Scanner;
 
 public class SignInFrame extends JFrame 
 {
-	
-	Database database = new Database();
 	// creating an array list of accounts
 	public static ArrayList<Account> accountsArrayList = new ArrayList<Account>();
 	
@@ -96,9 +99,7 @@ public class SignInFrame extends JFrame
 					{			
 						loginSuccessful = true;
 						userCurrentltLoggedIn = login;
-						ActivityFrame activityFrame = new ActivityFrame();
-						activityFrame.start();
-						dispose();
+						
 					}			
 				}
 				
@@ -110,6 +111,12 @@ public class SignInFrame extends JFrame
 					txtAccountName.setText("");
 					txtPassword.setText("");
 					
+				}
+				else
+				{
+					ActivityFrame activityFrame = new ActivityFrame();
+					activityFrame.start();
+					dispose();
 				}
 				
 			}
@@ -171,6 +178,36 @@ public class SignInFrame extends JFrame
 				e1.printStackTrace();
 			}
 
+		}
+		else if (file.exists())
+		{
+			Scanner sc2 = null;
+		    try 
+		    {
+		        sc2 = new Scanner(file);
+		    } 
+		    catch (FileNotFoundException e) 
+		    {
+		        e.printStackTrace();  
+		    }
+		    while (sc2.hasNextLine()) 
+		    {
+		        Scanner s2 = new Scanner(sc2.nextLine());
+		        boolean b;
+		        
+		        while (b = s2.hasNext()) 
+		        {
+		            String userName = s2.next();
+		            String password = s2.next();
+		            String id = s2.next();
+		            int newId = Integer.parseInt(id);
+		            
+		            Account accountToAdd = new Account(userName, password, newId );
+		            
+		            accountsArrayList.add(accountToAdd);
+		            
+		        }
+		    }
 		}
 		
 		// HERE i definitely know there is a accounts textfile that exists.
