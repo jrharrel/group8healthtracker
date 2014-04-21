@@ -34,6 +34,7 @@ public class SignUpFrame extends JFrame
 	
 	public Random generator = new Random();
 	private StringPanel currentPanel;
+	Database database = new Database();
 	
 	// Variables used in Calculator
 	
@@ -210,6 +211,13 @@ public class SignUpFrame extends JFrame
 		
 		currentPanel = new StringPanel();
 	}
+	
+	public void  setDatabase(Database databasePassed)
+	{
+		database = databasePassed;	
+	}
+	 //deleted an extra bracket that was here
+
 	
 	public void start()
 	{
