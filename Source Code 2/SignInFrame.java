@@ -37,6 +37,8 @@ import java.util.Scanner;
 
 public class SignInFrame extends JFrame 
 {
+	
+	Database database = new Database();
 	// creating an array list of accounts
 	public static ArrayList<Account> accountsArrayList = new ArrayList<Account>();
 	
