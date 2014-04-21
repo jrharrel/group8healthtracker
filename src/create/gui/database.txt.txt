@@ -1,0 +1,19 @@
+
+
+	Database file
+
+1 user: Brent
+2 date: 124578
+3 diastolic: 1
+4 systolic: 2
+5 bloodSugar: 3 
+6 pulseRate: 4
+7 calorieIntake: 5
+8 weight: 6
+9 workHours: 7
+a sleepHours: 8
+b cardioInMinutes: 9
+c strengthTraining: 10
+
+EOF
+	
