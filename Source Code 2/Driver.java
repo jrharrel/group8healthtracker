@@ -15,9 +15,9 @@ public class Driver
 		SignInFrame frame = new SignInFrame();
 		Database database = new DataBase();
 		frame.start();
-		frame.setDatabase();
-		have the sign in frame hold a database.  
-		All data is now available via signinframe
+		frame.setDatabase(database);
+		//have the sign in frame hold a database.  
+		//All data is now available via signinframe
 	}
 	
 }
