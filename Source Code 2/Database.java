@@ -171,7 +171,7 @@ class Database{
 		  			databaseReader = new FileReader(dataArray);
 					databaseReader.setLoginPieces(loginArray);
 		  
-		  
+		
 		  String loginFileString = "Heatlh Indicator DataBase Start";
 		  
 		  for(int i = 0; i < loginArray.size(); i++)
