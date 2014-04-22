@@ -1,5 +1,5 @@
 package create.gui;
-
+//
 public class HealthIndicator 
 {
 	private double _diastolic;

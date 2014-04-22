@@ -28,7 +28,7 @@ import java.io.UnsupportedEncodingException;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
-
+//
 public class SignUpFrame extends JFrame 
 {	
 	
@@ -107,7 +107,7 @@ public class SignUpFrame extends JFrame
 						{
 							foundValidID = true;
 						}
-						
+						//
 					}
 					while ( !foundValidID );
 					*/

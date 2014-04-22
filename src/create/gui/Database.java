@@ -187,7 +187,7 @@ class Database{
 		  }
 		 
 		 	updateDatabase();	 
-	
+	//
 	}//end main Once this method has been called there should a an array and string composed of login.txt
 
 	public void updateDatabase()

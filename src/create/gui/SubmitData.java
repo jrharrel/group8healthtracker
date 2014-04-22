@@ -1,5 +1,5 @@
 package create.gui;
-
+//
 class SubmitData 
 {
 	private String _user;

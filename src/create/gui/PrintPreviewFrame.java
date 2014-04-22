@@ -38,7 +38,7 @@ import javax.swing.JScrollBar;
 import java.awt.TextArea;
 import java.awt.Toolkit;
  
-
+//
 
 public class PrintPreviewFrame extends JFrame 
 {					
