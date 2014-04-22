@@ -25,7 +25,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
 import java.awt.Component;
 import javax.swing.Box;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
+//import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;

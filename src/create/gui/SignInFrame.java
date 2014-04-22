@@ -37,8 +37,12 @@ import java.util.Scanner;
 
 public class SignInFrame extends JFrame 
 {
+	
+	static public Database database = new Database();
 	// creating an array list of accounts
-	public static ArrayList<Account> accountsArrayList = new ArrayList<Account>();
+	public static ArrayList<LoginRecord> accountsArrayList = new ArrayList<LoginRecord>();
+	
+	
 	
 	// variable used to see which user is logged in.
 	public static String userCurrentltLoggedIn = "";
@@ -69,6 +73,11 @@ public class SignInFrame extends JFrame
 		setTitle("Health Project");
 		getContentPane().setLayout(null);
 		
+		accountsArrayList = database.getLoginArray();
+		
+		System.out.println(accountsArrayList.size());
+		
+		
 		txtAccountName = new JTextField();
 		txtAccountName.setBounds(159, 61, 86, 20);
 		getContentPane().add(txtAccountName);
@@ -88,9 +97,10 @@ public class SignInFrame extends JFrame
 				String login = txtAccountName.getText();
 				String password = txtPassword.getText();
 				
-				for (Account a : accountsArrayList)
+				for (LoginRecord a : accountsArrayList)
 				{   
-					if (a.getAccountName().equals(login) && a.getPassword().equals(password) )
+					System.out.println(a);
+					if (a.getUserName().equals(login) && a.getPassword().equals(password) )
 					{			
 						loginSuccessful = true;
 						userCurrentltLoggedIn = login;
@@ -188,10 +198,15 @@ public class SignInFrame extends JFrame
 	{
 		this.setLocation(650, 400);
 		this.setSize(530,250);
-		this.setVisible(true);
-		
-		
+		this.setVisible(true);	
 	}
+	
+	
+	public static  void addLogin(LoginRecord recordPassed)
+	{
+		database.addToLogin(recordPassed);
+	}	
+	
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {
 			putValue(NAME, "SwingAction");

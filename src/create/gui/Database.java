@@ -8,8 +8,8 @@ import java.io.PrintWriter;
 
 class Database{	
 
-	 List<LoginRecord> loginArray = new ArrayList<LoginRecord>();
-	 List<SubmitData> dataArray = new ArrayList<SubmitData>();
+	 ArrayList<LoginRecord> loginArray = new ArrayList<LoginRecord>();
+	 ArrayList<SubmitData> dataArray = new ArrayList<SubmitData>();
 	 FileReader databaseReader;
 	 FileWriter databaseWriter = new FileWriter();
 
@@ -19,6 +19,7 @@ class Database{
 	int loginArrayPosition = 0;
 	int loginArrayReaderPosition = 0;
 	
+	System.out.println();
 	File loginFile = new File("login.txt");
 	File dataFile = new File("database.txt");
 
@@ -26,14 +27,18 @@ class Database{
 		  		LoginRecord currentRecord = new LoginRecord();
             Scanner readScanner = new Scanner(loginFile);
             while (readScanner.hasNextLine()) {
-				
+					System.out.println("In Looop");
+					
 			       String line = readScanner.nextLine();
+			       
+			       System.out.println(line);
 					 String currentUser = "";
 					 String currentPw = "";		 
 					
 					if(line.charAt(0) == 'H') //always skip the first line
 						{
 						line = readScanner.nextLine();
+						System.out.println(line);
 						}
 					
 					if(line.charAt(0) == 'U')
@@ -46,7 +51,7 @@ class Database{
 					 	{
 					 	currentPw = line.substring(4); //four is the location of pw
 						currentRecord.setPassword(currentPw);
-						
+						System.out.println("Record added");
 						loginArray.add(currentRecord);
 						
 						loginArrayPosition++;
@@ -195,14 +200,26 @@ class Database{
 	{
 		loginArray.add(recordPassed);
 		databaseReader.setLoginPieces(loginArray);
+		updateDatabase();
 	}
 	
 	public void addToData(SubmitData recordPassed)	//This is for when data is Submitted
 	{
 		dataArray.add(recordPassed);
 		databaseReader.setDataPieces(dataArray);
+		updateDatabase();
 	}
 
+	
+	public ArrayList<LoginRecord> getLoginArray()
+	{
+		return loginArray;
+	}
+	
+	public ArrayList<SubmitData> getDataArray()
+	{
+		return dataArray;
+	}
 
 }//end class
 
@@ -215,8 +232,8 @@ class FileReader //The file reader actually is a passed an array of DataRecords
 	public FileReader(List<SubmitData> dataPassed)
 	{
 		dataPieces = dataPassed;
-		System.out.println("called");
-		getUserRecords("Brent");
+		//System.out.println("called");
+		//getUserRecords("Brent");
 	}
 	public void setLoginPieces(List<LoginRecord> passed)
 	{

@@ -26,7 +26,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
 import java.awt.Component;
 import javax.swing.Box;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
+//import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
 import javax.swing.JMenu;
 
@@ -37,6 +37,8 @@ public class ActivityFrame extends JFrame
 	public boolean nextTextBox = false;
 			
 	public int answer = 0;
+	
+	Database database = new Database();
 	
 	public String opperand = "";
 	private JTextField textField;
@@ -288,7 +290,7 @@ public class ActivityFrame extends JFrame
 			
 				
 				SubmitData newSubmitDataObject = new SubmitData( userLoggedIn ,
-						                                       123, 
+						                                       "123", 
 						                                    checkString(txtDiastolic),
 						                       				checkString(txtSystolic),
 						                       				checkString(txtBloodSugar),
@@ -300,7 +302,8 @@ public class ActivityFrame extends JFrame
 						                       				checkString(txtCardioInMinutes),
 						                       				checkString(txtStrengthTraining) );
 				// send this record to DataBase
-			
+				
+				database.addToData(newSubmitDataObject);
 				System.out.println(newSubmitDataObject);
 			}
 			

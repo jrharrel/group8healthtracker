@@ -68,9 +68,9 @@ public class SignUpFrame extends JFrame
 			{
 				boolean available = true;
 				
-				for (Account a : SignInFrame.accountsArrayList)
+				for (LoginRecord a : SignInFrame.accountsArrayList)
 				{   
-					if (a.getAccountName().equals(txtUsername.getText()) )
+					if (a.getUserName().equals(txtUsername.getText()) )
 					{	
 						available = false; 
 					}			
@@ -92,9 +92,8 @@ public class SignUpFrame extends JFrame
 					// this will always change.. need to initialize it to be able to use it. 
 					int ID = 9999999;
 					
-					do
-					{
-						ID = generator.nextInt( 9999998 ) + 1;
+					
+						/*ID = generator.nextInt( 9999998 ) + 1;
 						
 						for (Account a : SignInFrame.accountsArrayList)
 						{   
@@ -111,44 +110,26 @@ public class SignUpFrame extends JFrame
 						
 					}
 					while ( !foundValidID );
-					
+					*/
 					
 					txtUsername.setText("");
 					txtPassword.setText("");
 					
 					Account accountToAdd = new Account(userName, password, ID);
-					SignInFrame.accountsArrayList.add(accountToAdd);
+					//SignInFrame.accountsArrayList.add(accountToAdd);
+					LoginRecord recordToAdd = new LoginRecord(userName, password);
+					
+					SignInFrame.addLogin(recordToAdd);
+					
 					
 					JOptionPane.showMessageDialog ( 
 							   null, "Account Created" );
 					
 					dispose();
 					
+				
 					
-					try {
-						PrintWriter out = new PrintWriter("accounts.txt");
-						
-						for (Account a : SignInFrame.accountsArrayList)
-						{   
-							System.out.print(a);
-							out.println(a.getAccountName() + " " + a.getPassword() + " " + a.getID() );  
-						}
-						
-						out.close();
-						
-						
-						
-						
-					} catch (FileNotFoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-					
-					
-					
-									
-					
+
 					//SignInFrame string = new SignInFrame();
 					//string.start();
 					//dispose();
@@ -176,9 +157,9 @@ public class SignUpFrame extends JFrame
 					
 				boolean available = true;
 				
-				for (Account a : SignInFrame.accountsArrayList)
+				for (LoginRecord a : SignInFrame.accountsArrayList)
 				{   
-					if (a.getAccountName().equals(txtUsername.getText()) )
+					if (a.getUserName().equals(txtUsername.getText()) )
 					{	
 						available = false;
 						
