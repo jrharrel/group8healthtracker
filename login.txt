@@ -1,2 +1,8 @@
 Heatlh Indicator DataBase Start
+User: Brent
+Pw: Portugal
+User: Brent2
+Pw: Portugal2
+User: testAdd
+Pw: test
 EOF
