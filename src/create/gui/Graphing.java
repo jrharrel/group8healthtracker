@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Graphing {
-	//
+	////
 	String currentDate = "";
 	ArrayList<SubmitData> userData = new ArrayList<SubmitData>();
 	
