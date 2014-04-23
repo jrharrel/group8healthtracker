@@ -106,6 +106,7 @@ public class SignInFrame extends JFrame
 						loginSuccessful = true;
 						userCurrentltLoggedIn = login;
 						ActivityFrame activityFrame = new ActivityFrame();
+						activityFrame.setCurrentUser(login);
 						activityFrame.start();
 						dispose();
 					}			

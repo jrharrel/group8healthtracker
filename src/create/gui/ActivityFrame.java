@@ -45,8 +45,16 @@ import javax.swing.JMenu;
 
 public class ActivityFrame extends JFrame 
 {	
-	private StringPanel currentPanel;
+	String currentUser;
+	Graphing chartGrapher;
 	
+	
+	public void setCurrentUser(String userPassed)
+	{
+		currentUser = userPassed;
+	}
+	
+	private StringPanel currentPanel;
 	public boolean nextTextBox = false;
 			
 	public int answer = 0;
@@ -71,6 +79,20 @@ public class ActivityFrame extends JFrame
 	
 	public ActivityFrame() 
 	{
+		
+		
+		Date currentDate = new Date();
+		Calendar testCalendar = Calendar.getInstance();
+		testCalendar.setTime(currentDate);
+		String currentDatePassed =   (testCalendar.get(Calendar.MONTH)+ 1) + "/" + testCalendar.get(Calendar.DAY_OF_MONTH)+ "/" + 
+		testCalendar.get(Calendar.YEAR);
+		
+		chartGrapher = new Graphing(currentDatePassed);
+		 
+		
+		
+		
+		
 		getContentPane().setLayout(null);
 		
 		JLabel lblWorkHours = new JLabel("Work Hours");
@@ -294,12 +316,10 @@ public class ActivityFrame extends JFrame
 				String userLoggedIn = SignInFrame.getUserCurrentlyLoggedIN();
 				Date currentDate = new Date();
 				Calendar testCalendar = Calendar.getInstance();
-				
 				testCalendar.setTime(currentDate);
-				System.out.println(testCalendar);
 				String dateToPass =   (testCalendar.get(Calendar.MONTH)+ 1) + "/" + testCalendar.get(Calendar.DAY_OF_MONTH)+ "/" + 
 						testCalendar.get(Calendar.YEAR);
-				System.out.println(dateToPass);
+				
 			
 				
 				SubmitData newSubmitDataObject = new SubmitData( userLoggedIn ,
@@ -320,20 +340,32 @@ public class ActivityFrame extends JFrame
 			
 			}
 			
-			
-			
-			
-			
-			
-			
 		});
 		mnNewMenu.add(submitAllMenuItem);
 		
 		JMenuItem graphActivitiesMenuItem = new JMenuItem("  Graph Activities");
+		graphActivitiesMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//chartGrapher.setUserData(database.databaseReader.getUserRecords(currentUser));
+				//chartGrapher.returnGraph(timeframe, booleans); //booleans set the items to be graphed
+				
+				
+			}
+		});
 		mnNewMenu.add(graphActivitiesMenuItem);
 		
 		JMenuItem graphHealthIndicatorsMenuItem = new JMenuItem("  Graph Health Indicators");
+		graphHealthIndicatorsMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//chartGrapher.setUserData(database.databaseReader.getUserRecords(currentUser));
+				//chartGrapher.returnGraph(timeframe, booleans);
+			}
+		});
 		mnNewMenu.add(graphHealthIndicatorsMenuItem);
+		
+		
 		
 		JMenuItem printPreviewMenuItem = new JMenuItem("  Print Preview");
 		printPreviewMenuItem.addActionListener(new ActionListener() {

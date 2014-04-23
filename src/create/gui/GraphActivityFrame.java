@@ -8,32 +8,49 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
+
 import java.awt.event.InputMethodListener;
 import java.awt.event.InputMethodEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
+
 import java.awt.Component;
+
 import javax.swing.Box;
+
 //import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
+
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
+
 import java.awt.Color;
+import java.util.ArrayList;
 
 public class GraphActivityFrame extends JFrame 
 {	
 	private StringPanel currentPanel;
+	
+	static ArrayList<SubmitData> userData = new ArrayList<SubmitData>();
+	
+	public static void setUserData(ArrayList<SubmitData> dataPassed)
+	{
+		userData = dataPassed;
+	}
 	
 	public boolean nextTextBox = false;
 			
@@ -138,6 +155,15 @@ public class GraphActivityFrame extends JFrame
 		
 		JButton btnNewButton_1 = new JButton("Graph");
 		btnNewButton_1.setBounds(450, 151, 89, 23);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			
+				System.out.println("You pushed graph");
+				
+				//In here the graphing class will be passed the data it needs.
+			}
+		});
 		getContentPane().add(btnNewButton_1);
 		
 		JButton btnGraph = new JButton("Graph");
