@@ -413,7 +413,7 @@ public class ActivityFrame extends JFrame
 				
 				chartGrapher.setUserData(database.databaseReader.getUserRecords(currentUser));
 				//chartGrapher.returnGraph(timeframe, booleans); //booleans set the items to be graphed
-				
+				//TRA
 				
 			}
 		});
