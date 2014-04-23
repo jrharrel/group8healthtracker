@@ -92,7 +92,7 @@ public class ActivityFrame extends JFrame
 		getContentPane().setLayout(null);
 		
 		JLabel lblWorkHours = new JLabel("Work Hours");
-		lblWorkHours.setBounds(30, 72, 114, 14);
+		lblWorkHours.setBounds(43, 72, 114, 14);
 		getContentPane().add(lblWorkHours);
 		
 		JLabel lblSleepHours = new JLabel("Sleep Hours");
@@ -154,21 +154,21 @@ public class ActivityFrame extends JFrame
 		txtCalorieIntake.setColumns(10);
 		getContentPane().add(txtCalorieIntake);
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("");
-		chckbxNewCheckBox.setBounds(393, 32, 28, 23);
-		getContentPane().add(chckbxNewCheckBox);
+		final JCheckBox checkBoxWorkHours = new JCheckBox("");
+		checkBoxWorkHours.setBounds(393, 32, 28, 23);
+		getContentPane().add(checkBoxWorkHours);
 		
-		JCheckBox checkBox = new JCheckBox("");
-		checkBox.setBounds(393, 72, 28, 23);
-		getContentPane().add(checkBox);
+		final JCheckBox checkBoxSleepHours = new JCheckBox("");
+		checkBoxSleepHours.setBounds(393, 72, 28, 23);
+		getContentPane().add(checkBoxSleepHours);
 		
-		JCheckBox checkBox_1 = new JCheckBox("");
-		checkBox_1.setBounds(393, 112, 28, 23);
-		getContentPane().add(checkBox_1);
+		final JCheckBox checkBoxCardio = new JCheckBox("");
+		checkBoxCardio.setBounds(393, 112, 28, 23);
+		getContentPane().add(checkBoxCardio);
 		
-		JCheckBox checkBox_2 = new JCheckBox("");
-		checkBox_2.setBounds(393, 152, 28, 23);
-		getContentPane().add(checkBox_2);
+		final JCheckBox checkBoxStrength = new JCheckBox("");
+		checkBoxStrength.setBounds(393, 152, 28, 23);
+		getContentPane().add(checkBoxStrength);
 		
 		JLabel label = new JLabel("Work Hours");
 		label.setBounds(291, 35, 96, 14);
@@ -202,21 +202,21 @@ public class ActivityFrame extends JFrame
 		lblCalorieIntake_1.setBounds(291, 379, 96, 14);
 		getContentPane().add(lblCalorieIntake_1);
 		
-		JCheckBox checkBox_3 = new JCheckBox("");
-		checkBox_3.setBounds(394, 376, 28, 23);
-		getContentPane().add(checkBox_3);
+		final JCheckBox checkBoxCalorieIntake = new JCheckBox("");
+		checkBoxCalorieIntake.setBounds(394, 376, 28, 23);
+		getContentPane().add(checkBoxCalorieIntake);
 		
-		JCheckBox checkBox_4 = new JCheckBox("");
-		checkBox_4.setBounds(394, 336, 28, 23);
-		getContentPane().add(checkBox_4);
+		final JCheckBox checkBoxPulseRate = new JCheckBox("");
+		checkBoxPulseRate.setBounds(394, 336, 28, 23);
+		getContentPane().add(checkBoxPulseRate);
 		
-		JCheckBox checkBox_5 = new JCheckBox("");
-		checkBox_5.setBounds(394, 296, 28, 23);
-		getContentPane().add(checkBox_5);
+		final JCheckBox checkBoxBloodSugar = new JCheckBox("");
+		checkBoxBloodSugar.setBounds(394, 296, 28, 23);
+		getContentPane().add(checkBoxBloodSugar);
 		
-		JCheckBox checkBox_6 = new JCheckBox("");
-		checkBox_6.setBounds(394, 256, 28, 23);
-		getContentPane().add(checkBox_6);
+		final JCheckBox checkBoxBloodPressure = new JCheckBox("");
+		checkBoxBloodPressure.setBounds(394, 256, 28, 23);
+		getContentPane().add(checkBoxBloodPressure);
 		
 		txtWeight = new JTextField();
 		txtWeight.setBounds(144, 396, 86, 20);
@@ -226,34 +226,102 @@ public class ActivityFrame extends JFrame
 		JLabel label_6 = new JLabel("Weight");
 		label_6.setBounds(30, 396, 76, 14);
 		getContentPane().add(label_6);
+
+		final JRadioButton radWeekActivity = new JRadioButton("Week");
+		final JRadioButton radDayActivity = new JRadioButton("Day");
+		final JRadioButton radWeekHealthIndicator = new JRadioButton("Week");		
+		final JRadioButton radMonthHealthIndicator = new JRadioButton("Month");		
+		final JRadioButton radDayHealthIndicator = new JRadioButton("Day");
+		final JRadioButton radMonthActivity = new JRadioButton("Month");
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Day");
-		rdbtnNewRadioButton.setBounds(285, 414, 47, 23);
-		getContentPane().add(rdbtnNewRadioButton);
-		
-		JRadioButton rdbtnMonth = new JRadioButton("Month");
-		rdbtnMonth.setBounds(397, 414, 65, 23);
-		getContentPane().add(rdbtnMonth);
-		
-		JRadioButton rdbtnWeek = new JRadioButton("Week");
-		rdbtnWeek.setBounds(337, 414, 58, 23);
-		getContentPane().add(rdbtnWeek);
+		radDayHealthIndicator.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				if ( radDayHealthIndicator.isSelected() )
+				{
+					radWeekHealthIndicator.setSelected(false);
+					radMonthHealthIndicator.setSelected(false);
+					
+				}
+			}
+		});
+		radDayHealthIndicator.setBounds(285, 414, 47, 23);
+		getContentPane().add(radDayHealthIndicator);
+
+		radMonthHealthIndicator.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				if ( radMonthHealthIndicator.isSelected() )
+				{
+					radWeekHealthIndicator.setSelected(false);
+					radDayHealthIndicator.setSelected(false);
+					
+				}
+			}
+		});
+		radMonthHealthIndicator.setBounds(397, 414, 65, 23);
+		getContentPane().add(radMonthHealthIndicator);
+
+		radWeekHealthIndicator.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				if ( radWeekHealthIndicator.isSelected() )
+				{
+					radDayHealthIndicator.setSelected(false);
+					radMonthHealthIndicator.setSelected(false);
+					
+				}
+			}
+		});
+		radWeekHealthIndicator.setBounds(337, 414, 58, 23);
+		getContentPane().add(radWeekHealthIndicator);
 		
 		Component verticalStrut = Box.createVerticalStrut(20);
 		verticalStrut.setBounds(254, -16, 12, 524);
 		getContentPane().add(verticalStrut);
+		radDayActivity.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				if ( radDayActivity.isSelected() )
+				{
+					radWeekActivity.setSelected(false);
+					radMonthActivity.setSelected(false);
+					
+				}
+			}
+		});
+		radDayActivity.setBounds(285, 188, 47, 23);
+		getContentPane().add(radDayActivity);
 		
-		JRadioButton radioButton = new JRadioButton("Day");
-		radioButton.setBounds(285, 188, 47, 23);
-		getContentPane().add(radioButton);
 		
-		JRadioButton radioButton_1 = new JRadioButton("Week");
-		radioButton_1.setBounds(337, 188, 58, 23);
-		getContentPane().add(radioButton_1);
+		radWeekActivity.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				if ( radWeekActivity.isSelected() )
+				{
+					radDayActivity.setSelected(false);
+					radMonthActivity.setSelected(false);
+					
+				}
+			}
+		});
+		radWeekActivity.setBounds(337, 188, 58, 23);
+		getContentPane().add(radWeekActivity);
 		
-		JRadioButton radioButton_2 = new JRadioButton("Month");
-		radioButton_2.setBounds(397, 188, 65, 23);
-		getContentPane().add(radioButton_2);
+	
+		radMonthActivity.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				if ( radMonthActivity.isSelected() )
+				{
+					radDayActivity.setSelected(false);
+					radWeekActivity.setSelected(false);
+					
+				}
+			}
+		});
+		radMonthActivity.setBounds(397, 188, 65, 23);
+		getContentPane().add(radMonthActivity);
 		
 		Component horizontalStrut = Box.createHorizontalStrut(20);
 		horizontalStrut.setBounds(260, 225, 350, 12);
@@ -391,6 +459,57 @@ public class ActivityFrame extends JFrame
 			}
 		});
 		mnNewMenu.add(signOutMenuItem);
+		
+		JMenu mnEdit = new JMenu("Edit");
+		menuBar.add(mnEdit);
+		
+		JMenuItem mntmClearAll = new JMenuItem("Clear All");
+		mntmClearAll.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+// this is used to set the activity frame to its default setting
+				
+				txtWorkHours.setText("");
+				txtSleepHours.setText("");
+				txtCardioInMinutes.setText("");
+				txtStrengthTraining.setText("");
+				txtSystolic.setText("");
+				txtDiastolic.setText("");
+				txtBloodSugar.setText("");
+				txtPulseRate.setText("");
+				txtCalorieIntake.setText("");
+				txtWeight.setText("");
+				checkBoxWorkHours.setSelected(false);
+				checkBoxSleepHours.setSelected(false);
+				checkBoxCardio.setSelected(false);
+				checkBoxStrength.setSelected(false);
+				checkBoxBloodPressure.setSelected(false);
+				checkBoxBloodSugar.setSelected(false);
+				checkBoxPulseRate.setSelected(false);
+				checkBoxCalorieIntake.setSelected(false);
+				radDayActivity.setSelected(true);
+				radWeekActivity.setSelected(false);
+				radMonthActivity.setSelected(false);
+				radDayHealthIndicator.setSelected(true);
+				radWeekHealthIndicator.setSelected(false);
+				radMonthHealthIndicator.setSelected(false);
+			}
+		});
+		mnEdit.add(mntmClearAll);
+		
+		JMenu mnHelp = new JMenu("Help");
+		menuBar.add(mnHelp);
+		
+		JMenuItem mntmHelpContents = new JMenuItem("Help Contents");
+		mntmHelpContents.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				// show this message when the user clicks on help
+				JOptionPane.showMessageDialog ( 
+						   null, "\nPlease Visit Our Website: \n\nhttps://www.healthTracker.org/" );
+			}
+		});
+		mnHelp.add(mntmHelpContents);
 		
 		JMenuItem menuItem = new JMenuItem("");
 		menuBar.add(menuItem);
