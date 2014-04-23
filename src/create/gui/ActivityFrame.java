@@ -507,7 +507,7 @@ public class ActivityFrame extends JFrame
 				// show this message when the user clicks on help
 				JOptionPane.showMessageDialog ( 
 						   null, "\nPlease Visit Our Website: \n\nhttps://www.healthTracker.org/" );
-			}
+			}//
 		});
 		mnHelp.add(mntmHelpContents);
 		
