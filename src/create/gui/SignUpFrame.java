@@ -68,19 +68,24 @@ public class SignUpFrame extends JFrame
 			{
 				boolean available = true;
 				
+				// loop to go through all the accounts to see if we can create account or not
 				for (Account a : SignInFrame.accountsArrayList)
 				{   
-					if (a.getAccountName().equals(txtUsername.getText()) )
+					if (a.getAccountName().equalsIgnoreCase(txtUsername.getText()) )
 					{	
 						available = false; 
 					}			
 				}
-								
+				
+				// this is to check if the user has not entered anything into the textbox.
+				// thus the user name isn't available
 				if (available &&  txtUsername.getText().equals("") || (!available))
 				{
 					JOptionPane.showMessageDialog ( 
 						   null, "Cannot add account. Please check availability." ); 
 				}
+				
+				// if the username is available and there is text in the text boxes.. create account 
 				else if (available && !txtUsername.getText().equals(""))
 				{
 					String userName = txtUsername.getText();
@@ -94,8 +99,10 @@ public class SignUpFrame extends JFrame
 					
 					do
 					{
+						// generating a random ID for the user
 						ID = generator.nextInt( 9999998 ) + 1;
 						
+						// testing to see if the user ID is available
 						for (Account a : SignInFrame.accountsArrayList)
 						{   
 							if (a.getID() == ID )
@@ -112,7 +119,7 @@ public class SignUpFrame extends JFrame
 					}
 					while ( !foundValidID );
 					
-					
+					//set text boxes to empty
 					txtUsername.setText("");
 					txtPassword.setText("");
 					
@@ -122,10 +129,14 @@ public class SignUpFrame extends JFrame
 					JOptionPane.showMessageDialog ( 
 							   null, "Account Created" );
 					
+					// close window
 					dispose();
 					
+					try 
+					{
 					
-					try {
+						// writing all the accounts created or retrieved during the sessions to a new text file
+						// so we have all the accounts
 						PrintWriter out = new PrintWriter("accounts.txt");
 						
 						for (Account a : SignInFrame.accountsArrayList)
@@ -137,30 +148,18 @@ public class SignUpFrame extends JFrame
 						out.close();
 						
 						
-						
-						
-					} catch (FileNotFoundException e) {
+					} 
+					catch (FileNotFoundException e) 
+					{
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					
-					
-					
-					
-									
-					
-					//SignInFrame string = new SignInFrame();
-					//string.start();
-					//dispose();
-					
-					
-					
+												
 				}			
-				
-				
-				
+	
 			}
 		});
+		
 		btnNewButton.setBounds(118, 151, 141, 23);
 		getContentPane().add(btnNewButton);
 		
@@ -171,14 +170,16 @@ public class SignUpFrame extends JFrame
 		
 		JButton btnCheckAvailability = new JButton("Check Availability");
 		btnCheckAvailability.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) 
-			{// check availability
+			{// used to see if the user requested username is available
 					
 				boolean available = true;
 				
+				// looping through all the accounts to see if username is taken or not
 				for (Account a : SignInFrame.accountsArrayList)
 				{   
-					if (a.getAccountName().equals(txtUsername.getText()) )
+					if (a.getAccountName().equalsIgnoreCase(txtUsername.getText()) )
 					{	
 						available = false;
 						
