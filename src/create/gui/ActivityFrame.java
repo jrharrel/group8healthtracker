@@ -89,10 +89,6 @@ public class ActivityFrame extends JFrame
 		
 		chartGrapher = new Graphing(currentDatePassed);
 		 
-		
-		
-		
-		
 		getContentPane().setLayout(null);
 		
 		JLabel lblWorkHours = new JLabel("Work Hours");
@@ -347,7 +343,7 @@ public class ActivityFrame extends JFrame
 		graphActivitiesMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//chartGrapher.setUserData(database.databaseReader.getUserRecords(currentUser));
+				chartGrapher.setUserData(database.databaseReader.getUserRecords(currentUser));
 				//chartGrapher.returnGraph(timeframe, booleans); //booleans set the items to be graphed
 				
 				
@@ -359,7 +355,7 @@ public class ActivityFrame extends JFrame
 		graphHealthIndicatorsMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//chartGrapher.setUserData(database.databaseReader.getUserRecords(currentUser));
+				chartGrapher.setUserData(database.databaseReader.getUserRecords(currentUser));
 				//chartGrapher.returnGraph(timeframe, booleans);
 			}
 		});
