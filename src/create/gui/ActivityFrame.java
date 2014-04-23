@@ -1,5 +1,9 @@
 package create.gui;
 
+import java.util.Date;
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -9,25 +13,34 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
+
 import java.awt.event.InputMethodListener;
 import java.awt.event.InputMethodEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
+
 import java.awt.Component;
+
 import javax.swing.Box;
+
+
 //import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
+
 import javax.swing.JMenu;
 
 public class ActivityFrame extends JFrame 
@@ -268,16 +281,8 @@ public class ActivityFrame extends JFrame
 		
 		JMenuItem submitAllMenuItem = new JMenuItem("  Submit All");
 		
-		
-		
-		
-		
-		
 		submitAllMenuItem.addActionListener(new ActionListener() {
-			
-			
-			
-			
+				
 			public void actionPerformed(ActionEvent arg0) 
 			{// action to submit data
 				
@@ -287,10 +292,18 @@ public class ActivityFrame extends JFrame
 				// This variable is used to know which user is currently logged in 
 				// for writing the data to the correct users text file.
 				String userLoggedIn = SignInFrame.getUserCurrentlyLoggedIN();
+				Date currentDate = new Date();
+				Calendar testCalendar = Calendar.getInstance();
+				
+				testCalendar.setTime(currentDate);
+				System.out.println(testCalendar);
+				String dateToPass =   (testCalendar.get(Calendar.MONTH)+ 1) + "/" + testCalendar.get(Calendar.DAY_OF_MONTH)+ "/" + 
+						testCalendar.get(Calendar.YEAR);
+				System.out.println(dateToPass);
 			
 				
 				SubmitData newSubmitDataObject = new SubmitData( userLoggedIn ,
-						                                       "123", 
+						                                       dateToPass, 
 						                                    checkString(txtDiastolic),
 						                       				checkString(txtSystolic),
 						                       				checkString(txtBloodSugar),
@@ -304,7 +317,7 @@ public class ActivityFrame extends JFrame
 				// send this record to DataBase
 				
 				database.addToData(newSubmitDataObject);
-				System.out.println(newSubmitDataObject);
+			
 			}
 			
 			

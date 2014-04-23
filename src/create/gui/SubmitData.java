@@ -1,5 +1,5 @@
 package create.gui;
-//
+import java.util.Date;
 class SubmitData 
 {
 	private String _user;

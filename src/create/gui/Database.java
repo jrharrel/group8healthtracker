@@ -1,8 +1,8 @@
 package create.gui;
 
 import java.io.File;
+import java.util.Date;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 import java.util.*;
 import java.io.PrintWriter;
 
@@ -205,8 +205,36 @@ class Database{
 	
 	public void addToData(SubmitData recordPassed)	//This is for when data is Submitted
 	{
-		dataArray.add(recordPassed);
-		databaseReader.setDataPieces(dataArray);
+	
+		
+		for(int i = 0; i<this.dataArray.size(); i++) //remove all dates that match from the database
+		{
+			SubmitData a = this.dataArray.get(i);
+		
+			if(a.getDate().equals(recordPassed.getDate()))
+			{
+				System.out.println("removed" + a);
+				System.out.println(i);
+				this.dataArray.remove(a);
+				i--;
+			}
+			
+		}
+		
+		for(SubmitData a : this.dataArray)
+		{
+				System.out.println(a.getDate());
+				if(a.getDate().equals(recordPassed.getDate()))
+					{
+						System.out.println("Why!");
+						this.dataArray.remove(a);
+					}
+					
+		
+		}
+		
+		this.dataArray.add(recordPassed);
+		databaseReader.setDataPieces(this.dataArray);
 		updateDatabase();
 	}
 
@@ -220,6 +248,11 @@ class Database{
 	{
 		return dataArray;
 	}
+	
+	public ArrayList<SubmitData> getUserRecords(String userRequested)
+	{
+		return databaseReader.getUserRecords(userRequested);
+	}
 
 }//end class
 
@@ -232,8 +265,6 @@ class FileReader //The file reader actually is a passed an array of DataRecords
 	public FileReader(List<SubmitData> dataPassed)
 	{
 		dataPieces = dataPassed;
-		//System.out.println("called");
-		//getUserRecords("Brent");
 	}
 	public void setLoginPieces(List<LoginRecord> passed)
 	{
@@ -244,7 +275,6 @@ class FileReader //The file reader actually is a passed an array of DataRecords
 	{
 		dataPieces = passed;
 	}
-	
 	
 	public ArrayList<SubmitData> getUserRecords(String userRequested)
 	{
@@ -260,8 +290,6 @@ class FileReader //The file reader actually is a passed an array of DataRecords
 		
 		return dataToPass;
 	}//end getUserRecords
-	
-
 	
 }
 
