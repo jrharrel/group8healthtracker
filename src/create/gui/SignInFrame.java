@@ -1,6 +1,8 @@
 package create.gui;
 //
 import java.util.Date;
+
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -10,19 +12,28 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import java.awt.Cursor;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
+
 import java.awt.event.InputMethodListener;
 import java.awt.event.InputMethodEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -71,9 +82,20 @@ public class SignInFrame extends JFrame
 	
 	public SignInFrame() 
 	{
+		//Get the default toolkit  
+		Toolkit toolkit = Toolkit.getDefaultToolkit();  
+		//Get the default toolkit  
+		Point hotSpot = new Point(5,5);  
+		Image wizardPointer = null;
+		
+		try {
+		    wizardPointer = ImageIO.read(new File("eye.png"));
+		} catch (IOException e) {
+		}
 		setTitle("Health Project");
 		getContentPane().setLayout(null);
-		
+		Cursor cursor = toolkit.createCustomCursor(wizardPointer, hotSpot, "ABRAKADABRA");
+		this.setCursor(cursor);
 		accountsArrayList = database.getLoginArray();
 		
 		System.out.println(accountsArrayList.size());
