@@ -24,8 +24,17 @@ public class Graphing {
 	boolean bloodSugarChecked = false;
 	boolean pulseRateChecked = false;
 	boolean calorieIntakeChecked = false;
-
 	
+	int workHours;
+	int sleepHours;
+	int cardioHours;
+	int strengthHours;
+	
+	int bloodPressure;
+	int bloodSugar;
+	int pulseRate;
+	int calorieIntake; 
+
 	public Graphing(String datePassed)
 	{
 		System.out.println("Graphing made:");
@@ -37,8 +46,7 @@ public class Graphing {
 	{
 		currentDate = datePassed;
 	}
-	
-	
+		
 	public void setUserData(ArrayList<SubmitData> dataPassed)
 	{
 		userData = dataPassed;
@@ -87,8 +95,7 @@ public class Graphing {
 		}
 		
 		monthToReturn = Integer.parseInt(monthToConvert);
-		return monthToReturn;
-		
+		return monthToReturn;	
 		}
 	
 	public int getYear(String dateToChange)
@@ -113,8 +120,7 @@ public class Graphing {
 		yearToReturn = Integer.parseInt(yearToConvert);
 		return yearToReturn;
 	}
-	
-	
+		
 	public void graphHealth(int _timeFrame,boolean _bloodPressureChecked,boolean _bloodSugarChecked, boolean _pulseRateChecked,boolean _calorieIntakeChecked )
 	{
 		
@@ -143,12 +149,42 @@ public class Graphing {
 		sleepHoursChecked = _sleepHoursChecked;
 		cardioChecked = _cardioChecked;
 		strengthChecked = _strengthChecked;
-		
-		timeFrame = _timeFrame;
-		
+
+		timeFrame = _timeFrame;	
 		//returnGraph();
 	}
 	
-
-	
+	public void returnGraph()
+	{
+		//update the chart
+		if(timeFrame == MONTH)
+		{
+			for(SubmitData a : userData)
+			{
+				if(getMonth(a.getDate()) == getMonth(currentDate))
+				{
+					//add all the records for this month
+				}
+			}
+		}else if(timeFrame == WEEK)
+		{
+			for(SubmitData a : userData)
+			{
+				if  (getMonth(a.getDate()) == getMonth(currentDate) &&
+					(getDay(a.getDate()) - getDay(currentDate)) >= -7 &&
+					(getDay(a.getDate()) - getDay(currentDate)) <= 0 )
+				{
+					//add all the records for this week
+				}
+			}
+		}else
+		{
+			timeFrame = DAY;
+			for (SubmitData a : userData)
+			{
+				//return a chart for the day
+			}	
+		}	
+		//set visible
+	}
 }

@@ -264,6 +264,69 @@ public class ActivityFrame extends JFrame
 		radDayHealthIndicator.setBounds(285, 414, 47, 23);
 		getContentPane().add(radDayHealthIndicator);
 
+		
+		checkBoxBloodPressure.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				if ( checkBoxBloodPressure.isSelected() )
+				{
+					checkBoxPulseRate.setSelected(false);
+					 
+					checkBoxBloodSugar.setSelected(false);
+					
+					 checkBoxCalorieIntake.setSelected(false);
+					
+					
+				}
+			}
+		});
+		checkBoxBloodSugar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				if ( checkBoxBloodSugar.isSelected() )
+				{
+					checkBoxPulseRate.setSelected(false);
+					 
+					checkBoxBloodPressure.setSelected(false);
+					
+					 checkBoxCalorieIntake.setSelected(false);
+					
+					
+				}
+			}
+		});
+		checkBoxPulseRate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				if ( checkBoxPulseRate.isSelected() )
+				{
+					checkBoxBloodPressure.setSelected(false);
+					 
+					checkBoxBloodSugar.setSelected(false);
+					
+					 checkBoxCalorieIntake.setSelected(false);
+					
+					
+				}
+			}
+		});
+		checkBoxCalorieIntake.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				if ( checkBoxCalorieIntake.isSelected() )
+				{
+					checkBoxBloodPressure.setSelected(false);
+					 
+					checkBoxBloodSugar.setSelected(false);
+					
+					checkBoxPulseRate.setSelected(false);
+					
+					
+				}
+			}
+		});
+		
+		
 		radMonthHealthIndicator.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
