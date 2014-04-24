@@ -9,6 +9,23 @@ public class Graphing {
 	String currentDate = "";
 	ArrayList<SubmitData> userData = new ArrayList<SubmitData>();
 	
+	int timeFrame = 0;
+	
+	public final int DAY = 0;
+	public final int MONTH = 1;
+	public final int YEAR = 2;
+	
+	boolean workHoursChecked = false;
+	boolean sleepHoursChecked = false;
+	boolean cardioChecked = false;
+	boolean strengthChecked = false;
+
+	boolean bloodPressureChecked = false;
+	boolean bloodSugarChecked = false;
+	boolean pulseRateChecked = false;
+	boolean calorieIntakeChecked = false;
+
+	
 	public Graphing(String datePassed)
 	{
 		System.out.println("Graphing made:");
@@ -98,6 +115,40 @@ public class Graphing {
 	}
 	
 	
+	public void graphHealth(int _timeFrame,boolean _bloodPressureChecked,boolean _bloodSugarChecked, boolean _pulseRateChecked,boolean _calorieIntakeChecked )
+	{
+		
+		timeFrame = _timeFrame;
+		bloodPressureChecked = _bloodPressureChecked;
+		bloodSugarChecked = _bloodSugarChecked;
+		pulseRateChecked = _pulseRateChecked;
+		calorieIntakeChecked = _calorieIntakeChecked;
+		
+		workHoursChecked = false;
+		sleepHoursChecked = false;
+		cardioChecked = false;
+		strengthChecked = false;
+		
+		//returnGraph();
+	}
 	
+	public void graphActivies(int _timeFrame,boolean _workHoursChecked,boolean _sleepHoursChecked, boolean _cardioChecked,boolean _strengthChecked )
+	{
+		bloodPressureChecked = false;
+		bloodSugarChecked = false;
+		pulseRateChecked = false;
+		calorieIntakeChecked = false;
+		
+		workHoursChecked = _workHoursChecked;
+		sleepHoursChecked = _sleepHoursChecked;
+		cardioChecked = _cardioChecked;
+		strengthChecked = _strengthChecked;
+		
+		timeFrame = _timeFrame;
+		
+		//returnGraph();
+	}
+	
+
 	
 }

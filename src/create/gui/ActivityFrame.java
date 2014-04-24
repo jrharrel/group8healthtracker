@@ -48,6 +48,17 @@ public class ActivityFrame extends JFrame
 	String currentUser;
 	Graphing chartGrapher;
 	
+	boolean workHoursChecked = false;
+	boolean sleepHoursChecked = false;
+	boolean cardioChecked = false;
+	boolean strengthChecked = false;
+
+	boolean bloodPressureChecked = false;
+	boolean bloodSugarChecked = false;
+	boolean pulseRateChecked = false;
+	boolean calorieIntakeChecked = false;
+
+	
 	
 	public void setCurrentUser(String userPassed)
 	{
@@ -411,8 +422,13 @@ public class ActivityFrame extends JFrame
 		graphActivitiesMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				 workHoursChecked = checkBoxWorkHours.isSelected();
+				 sleepHoursChecked = checkBoxSleepHours.isSelected();
+				 cardioChecked = checkBoxCardio.isSelected();
+				 strengthChecked = checkBoxStrength.isSelected();
+				
 				chartGrapher.setUserData(database.databaseReader.getUserRecords(currentUser));
-				//chartGrapher.returnGraph(timeframe, booleans); //booleans set the items to be graphed
+				//chartGrapher.retu(timeframe, booleans); //booleans set the items to be graphed
 				//TRA
 				
 			}
@@ -423,8 +439,17 @@ public class ActivityFrame extends JFrame
 		graphHealthIndicatorsMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+
+				bloodPressureChecked =checkBoxBloodPressure.isSelected();
+				 
+				bloodSugarChecked = checkBoxBloodSugar.isSelected();
+				
+				pulseRateChecked = checkBoxPulseRate.isSelected();
+				
+				calorieIntakeChecked = checkBoxCalorieIntake.isSelected();
+				
 				chartGrapher.setUserData(database.databaseReader.getUserRecords(currentUser));
-				//chartGrapher.returnGraph(timeframe, booleans);
+				//chartGrapher.graphHealth(0, bloodPressureChecked, bloodSugarChecked, pulseRateChecked, calorieIntakeChecked );
 			}
 		});
 		mnNewMenu.add(graphHealthIndicatorsMenuItem);
