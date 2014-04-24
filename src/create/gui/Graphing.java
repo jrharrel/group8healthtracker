@@ -12,8 +12,8 @@ public class Graphing {
 	int timeFrame = 0;
 	
 	public final int DAY = 0;
-	public final int MONTH = 1;
-	public final int YEAR = 2;
+	public final int WEEK = 1;
+	public final int MONTH = 2;
 	
 	boolean workHoursChecked = false;
 	boolean sleepHoursChecked = false;
@@ -132,7 +132,7 @@ public class Graphing {
 		//returnGraph();
 	}
 	
-	public void graphActivies(int _timeFrame,boolean _workHoursChecked,boolean _sleepHoursChecked, boolean _cardioChecked,boolean _strengthChecked )
+	public void graphActivity(int _timeFrame,boolean _workHoursChecked,boolean _sleepHoursChecked, boolean _cardioChecked,boolean _strengthChecked )
 	{
 		bloodPressureChecked = false;
 		bloodSugarChecked = false;

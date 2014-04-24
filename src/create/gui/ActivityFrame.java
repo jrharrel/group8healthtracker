@@ -57,7 +57,12 @@ public class ActivityFrame extends JFrame
 	boolean bloodSugarChecked = false;
 	boolean pulseRateChecked = false;
 	boolean calorieIntakeChecked = false;
-
+	
+	int timeFrame = 0;
+	
+	public final int DAY = 0;
+	public final int WEEK = 1;
+	public final int MONTH = 2;
 	
 	
 	public void setCurrentUser(String userPassed)
@@ -422,13 +427,27 @@ public class ActivityFrame extends JFrame
 		graphActivitiesMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				
+				if(radDayActivity.isSelected())
+				{
+					timeFrame = DAY;
+				}
+				if(radWeekActivity.isSelected())
+				{
+					timeFrame = WEEK;
+				}
+				if(radMonthActivity.isSelected())
+				{
+					timeFrame = MONTH;
+				}
+			
 				 workHoursChecked = checkBoxWorkHours.isSelected();
 				 sleepHoursChecked = checkBoxSleepHours.isSelected();
 				 cardioChecked = checkBoxCardio.isSelected();
 				 strengthChecked = checkBoxStrength.isSelected();
 				
 				chartGrapher.setUserData(database.databaseReader.getUserRecords(currentUser));
-				//chartGrapher.retu(timeframe, booleans); //booleans set the items to be graphed
+				chartGrapher.graphActivity(timeFrame,workHoursChecked,sleepHoursChecked, cardioChecked,strengthChecked); //booleans set the items to be graphed
 				//TRA
 				
 			}
@@ -439,7 +458,20 @@ public class ActivityFrame extends JFrame
 		graphHealthIndicatorsMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-
+				
+			if(	radDayHealthIndicator.isSelected())
+			{
+				timeFrame = DAY;
+			}
+			if(	radWeekHealthIndicator.isSelected())
+			{
+				timeFrame = WEEK;
+			}
+			if(	radMonthHealthIndicator.isSelected())
+			{
+				timeFrame = MONTH;
+			}
+			
 				bloodPressureChecked =checkBoxBloodPressure.isSelected();
 				 
 				bloodSugarChecked = checkBoxBloodSugar.isSelected();
@@ -449,7 +481,7 @@ public class ActivityFrame extends JFrame
 				calorieIntakeChecked = checkBoxCalorieIntake.isSelected();
 				
 				chartGrapher.setUserData(database.databaseReader.getUserRecords(currentUser));
-				//chartGrapher.graphHealth(0, bloodPressureChecked, bloodSugarChecked, pulseRateChecked, calorieIntakeChecked );
+				chartGrapher.graphHealth(timeFrame, bloodPressureChecked, bloodSugarChecked, pulseRateChecked, calorieIntakeChecked );
 			}
 		});
 		mnNewMenu.add(graphHealthIndicatorsMenuItem);
