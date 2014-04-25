@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
+
 public class Graphing {
 	////
 	String currentDate = "";
@@ -154,6 +159,40 @@ public class Graphing {
 		//returnGraph();
 	}
 	
+	
+	public JFreeChart returnGraph2()
+	{
+	        
+	        /*int DMY = 1; // Day/Month/Year Selection
+	                    // Day = 1, Month = 2, Year = 3
+	        
+	        if (DMY == 1)
+	        {*/
+	            DefaultPieDataset dataset = new DefaultPieDataset();
+	            dataset.setValue("Week 1", 43.2);
+	            dataset.setValue("Week 2", 27.9);
+	            dataset.setValue("Week 3", 79.5);
+	            dataset.setValue("Week 4", 19.2);
+	     
+	        
+	        JFreeChart chart = ChartFactory.createPieChart(
+	        "Time Spent On Cardio",
+	        dataset,
+	        true,
+	        true,
+	        false
+	        );
+
+
+	        
+	        ChartFrame frame = new ChartFrame("Cardio Chart", chart);
+	        frame.pack();
+	        frame.setVisible(true);
+	        }
+	       
+	
+
+
 	public void returnGraph()
 	{
 		//update the chart

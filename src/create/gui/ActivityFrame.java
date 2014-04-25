@@ -555,9 +555,9 @@ public class ActivityFrame extends JFrame
 				//Prepare text file then pass into fame
 				database.databaseWriter.writeDatabaseData("printPreview.txt", database.getUserRecords(currentUser) );
 				//edit for fomatting
-				
+				// 
 				// database.getUserRecords(currentUser) returns a record of all the user stuffs
-				
+				//
 				//edit printPreviewFile
 				PrintPreviewFrame preview = new PrintPreviewFrame();
 				preview.start();
