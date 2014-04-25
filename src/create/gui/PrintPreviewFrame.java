@@ -62,14 +62,12 @@ public class PrintPreviewFrame extends JFrame
 		getContentPane().add(jTextArea1);
 		
 		// this is used to get the current user that is logged in so w know what txt file to read from
-		String currentUser = SignInFrame.getUserCurrentlyLoggedIN();
-				
-		String fileName = "" + currentUser+".txt";
+		
 				
 		try 
 		{
 			String textLine;
-			FileReader fr = new FileReader("jadeswanson.txt");
+			FileReader fr = new FileReader("printPreview.txt"); // this file is passed from the action listener
 			BufferedReader reader = new BufferedReader(fr);
 			String line;
 			while ((line = reader.readLine()) != null)
