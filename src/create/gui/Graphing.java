@@ -1,13 +1,19 @@
 package create.gui;
 
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.Dataset;
 import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.ui.RefineryUtilities;
 
 public class Graphing {
 	////
@@ -128,7 +134,7 @@ public class Graphing {
 		
 	public void graphHealth(int _timeFrame,boolean _bloodPressureChecked,boolean _bloodSugarChecked, boolean _pulseRateChecked,boolean _calorieIntakeChecked )
 	{
-		returnGraph2();
+		
 		timeFrame = _timeFrame;
 		bloodPressureChecked = _bloodPressureChecked;
 		bloodSugarChecked = _bloodSugarChecked;
@@ -140,7 +146,7 @@ public class Graphing {
 		cardioChecked = false;
 		strengthChecked = false;
 		
-		//returnGraph();
+		returnPieChart();
 	}
 	
 	public void graphActivity(int _timeFrame,boolean _workHoursChecked,boolean _sleepHoursChecked, boolean _cardioChecked,boolean _strengthChecked )
@@ -156,11 +162,37 @@ public class Graphing {
 		strengthChecked = _strengthChecked;
 
 		timeFrame = _timeFrame;	
-		//returnGraph();
+		returnBarGraph();
 	}
 	
-	
-	public void returnGraph2() // udpdate to graph
+
+    
+    public void returnBarGraph() 
+    {
+    
+    	
+    	
+    DefaultCategoryDataset dataset = new 	    DefaultCategoryDataset();
+    dataset.addValue(1.0, "Row 1", "Column 1");
+    dataset.addValue(122.0, "Row 1", "Column 2");
+    dataset.addValue(3.0, "Row 1", "Column 3");
+    dataset.addValue(2.0, "Row 2", "Column 1");
+    dataset.addValue(45.0, "Row 2", "Column 2");
+    dataset.addValue(2.0, "Row 2", "Column 3");
+    
+    //Columns shall be the dates, rows shall be the bpms.... values are where they lie
+    JFreeChart barChart = ChartFactory.createLineChart("line", "line", "line", dataset); //Where each
+       
+    //JFreeChart barChart = ChartFactory.createBarChart("test", "cat", "axis", dataset);
+ 
+    ChartFrame frame = new ChartFrame("Cardio Chart", barChart);
+    
+    frame.pack();
+    frame.setVisible(true);
+    }
+
+   
+	public void returnPieChart() // udpdate to graph
 	{
 	        
 	        /*int DMY = 1; // Day/Month/Year Selection
