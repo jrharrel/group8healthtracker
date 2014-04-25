@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
@@ -94,6 +95,7 @@ public class SignInFrame extends JFrame
 		}
 		setTitle("Health Project");
 		getContentPane().setLayout(null);
+		
 		Cursor cursor = toolkit.createCustomCursor(wizardPointer, hotSpot, "ABRAKADABRA");
 		this.setCursor(cursor);
 		accountsArrayList = database.getLoginArray();
@@ -214,6 +216,7 @@ public class SignInFrame extends JFrame
 	
 	private void setupFrame()
 	{
+			
 		this.setContentPane(currentPanel);
 		
 	}

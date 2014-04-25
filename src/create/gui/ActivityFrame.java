@@ -286,11 +286,8 @@ public class ActivityFrame extends JFrame
 				if ( checkBoxBloodSugar.isSelected() )
 				{
 					checkBoxPulseRate.setSelected(false);
-					 
 					checkBoxBloodPressure.setSelected(false);
-					
-					 checkBoxCalorieIntake.setSelected(false);
-					
+					checkBoxCalorieIntake.setSelected(false);
 					
 				}
 			}
