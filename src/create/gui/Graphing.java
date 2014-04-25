@@ -128,7 +128,7 @@ public class Graphing {
 		
 	public void graphHealth(int _timeFrame,boolean _bloodPressureChecked,boolean _bloodSugarChecked, boolean _pulseRateChecked,boolean _calorieIntakeChecked )
 	{
-		
+		returnGraph2();
 		timeFrame = _timeFrame;
 		bloodPressureChecked = _bloodPressureChecked;
 		bloodSugarChecked = _bloodSugarChecked;
@@ -160,7 +160,7 @@ public class Graphing {
 	}
 	
 	
-	public JFreeChart returnGraph2()
+	public void returnGraph2() // udpdate to graph
 	{
 	        
 	        /*int DMY = 1; // Day/Month/Year Selection
