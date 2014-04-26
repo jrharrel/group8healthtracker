@@ -83,21 +83,29 @@ public class SignInFrame extends JFrame
 	
 	public SignInFrame() 
 	{
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
 		//Get the default toolkit  
 		Toolkit toolkit = Toolkit.getDefaultToolkit();  
-		//Get the default toolkit  
+		
 		Point hotSpot = new Point(5,5);  
 		Image wizardPointer = null;
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		try {
-		    wizardPointer = ImageIO.read(new File("eye.png"));
+		    wizardPointer = ImageIO.read(this.getClass().getResource("eye.png"));
+	
+			Cursor cursor = toolkit.createCustomCursor(wizardPointer, hotSpot, "ABRAKADABRA");		
+			this.setCursor(cursor);
+		
+		
 		} catch (IOException e) {
+			System.out.println("Broken");
 		}
 		setTitle("Health Project");
+	
 		getContentPane().setLayout(null);
 		
-		Cursor cursor = toolkit.createCustomCursor(wizardPointer, hotSpot, "ABRAKADABRA");
-		this.setCursor(cursor);
+		
 		accountsArrayList = database.getLoginArray();
 		
 		System.out.println(accountsArrayList.size());

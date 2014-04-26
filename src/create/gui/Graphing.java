@@ -238,7 +238,7 @@ public class Graphing {
    
     int dayCounter = 0;
     double valueToPass = 0;
-    
+    dataset.addValue(valueToPass, lineCategory, "Day " + dayCounter);
     if(timeFrame == DAY)
     {
     	for(SubmitData a : userData)
