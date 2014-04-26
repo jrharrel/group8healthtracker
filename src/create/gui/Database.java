@@ -16,8 +16,7 @@ class Database{
 	public Database() {
 	//this will be the createLoginData method
 	
-	int loginArrayPosition = 0;
-	int loginArrayReaderPosition = 0;
+
 	
 	System.out.println();
 	File loginFile = new File("login.txt");
@@ -54,7 +53,7 @@ class Database{
 						System.out.println("Record added");
 						loginArray.add(currentRecord);
 						
-						loginArrayPosition++;
+						
 					 	}
 					else if(line.charAt(0) == 'E') //add an empty record
 						{
@@ -156,7 +155,7 @@ class Database{
 						}
 					else if(line.charAt(0) == 'b') //add an empty record
 						{
-							cardioInMinutes = line.substring(19);
+							cardioInMinutes = line.substring(18);
 							currentRecord.setCardio(Double.parseDouble(cardioInMinutes));
 						}
 					else if(line.charAt(0) == 'c') //add an empty record

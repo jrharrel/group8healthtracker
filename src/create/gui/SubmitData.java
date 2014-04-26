@@ -28,6 +28,7 @@ class SubmitData
 		_diastolic = diastolic;
 		_systolic = systolic;
 		_bloodSugar = bloodsugar;
+		_cardioInMinutes = cardio;
 		_pulseRate = pulseRate;
 		_calorieIntake = calorieIntake;
 		_weight = weight;

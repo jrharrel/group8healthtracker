@@ -36,20 +36,24 @@ public class Graphing {
 	boolean pulseRateChecked = false;
 	boolean calorieIntakeChecked = false;
 	
-	int workHours;
-	int sleepHours;
-	int cardioHours;
-	int strengthHours;
+	double hoursLeft= 0;
+	int workHours = 0;
+	int sleepHours = 0;
+	double cardioHours = 0;
+	double strengthHours = 0;
 	
-	int bloodPressure;
-	int bloodSugar;
-	int pulseRate;
-	int calorieIntake; 
-
+	int bloodPressure = 0;
+	int bloodSugar = 0;
+	int pulseRate = 0;
+	int calorieIntake = 0; 
+	ChartFrame frame;
+	
+	
 	public Graphing(String datePassed)
 	{
 		System.out.println("Graphing made:");
 		System.out.println("month: " + getMonth(datePassed)  + "\nday: "+ getDay(datePassed)  + "\nyear" + getYear(datePassed) );
+		currentDate = datePassed;
 	}
 	
 	
@@ -146,7 +150,7 @@ public class Graphing {
 		cardioChecked = false;
 		strengthChecked = false;
 		
-		returnPieChart();
+		returnLineGraph();
 	}
 	
 	public void graphActivity(int _timeFrame,boolean _workHoursChecked,boolean _sleepHoursChecked, boolean _cardioChecked,boolean _strengthChecked )
@@ -160,52 +164,240 @@ public class Graphing {
 		sleepHoursChecked = _sleepHoursChecked;
 		cardioChecked = _cardioChecked;
 		strengthChecked = _strengthChecked;
+		
 
+	  
 		timeFrame = _timeFrame;	
-		returnBarGraph();
+		returnPieChart();
+	}
+	
+
+	public double addLinePoint(SubmitData dataPassed)
+	{
+		if(bloodPressureChecked )
+    	{
+    		return dataPassed.getDiastolic()/dataPassed.getSystolic();
+ 
+    	}
+    	if(bloodSugarChecked )
+    	{
+    		return dataPassed.getBloodSugar();
+    	}
+    	
+    	if(pulseRateChecked)
+    	{
+    		return dataPassed.getPulseRate();
+    	}
+	
+    	if(calorieIntakeChecked)
+    	{
+    		return dataPassed.getCalorieIntake();
+    	}
+    	return 0;
 	}
 	
 
     
-    public void returnBarGraph() 
+    public void returnLineGraph() 
     {
+    	 String chartTitle = "Title";
+  	   String lineCategory = "Category";
+  	   String xValue = "Time Elapsed";
+  	   String yValue = "Y";
+    	double valueToAdd = 0;
+    	
+    DefaultCategoryDataset dataset = new DefaultCategoryDataset();
     
+    	if(bloodPressureChecked )
+    	{
+    		chartTitle = "Blood Pressure";
+    		yValue = "Systolic/Diastolic";
+    	
+    		
+    	}
+    	if(bloodSugarChecked )
+    	{
+    		chartTitle = "Blood Sugar";
+    		yValue = "Sugars";
+    	}
+    	
+    	if(pulseRateChecked)
+    	{
+    		chartTitle = "PulseRate";
+    		yValue = "BPMS";
+    	}
+	
+    	if(calorieIntakeChecked)
+    	{
+    		chartTitle = "Calorie Intake";
+    		yValue = "Calories";
+    	}
+    	
+   
+    int dayCounter = 0;
+    double valueToPass = 0;
+    
+    if(timeFrame == DAY)
+    {
+    	for(SubmitData a : userData)
+    	{
+    		if(a.getDate().equals(currentDate))
+    		{
+    			dayCounter++;
+    			dataset.addValue(addLinePoint(a), lineCategory, "Day " + dayCounter);
+    		
+    		}
+    	}
+    	hoursLeft = hoursLeft - workHours - sleepHours - cardioHours - strengthHours;
+    }
+    if(timeFrame == WEEK)
+    {
+    	
+    		for(SubmitData a : userData)
+    		{
+    			if((getMonth(a.getDate()) == getMonth(currentDate) &&
+    					(getDay(a.getDate()) - getDay(currentDate)) >= -7 &&
+    					(getDay(a.getDate()) - getDay(currentDate)) <= 0 ))
+    			{
+    				dayCounter++;
+    				valueToPass = addLinePoint(a);
+    				if(valueToPass >= 0)
+        			dataset.addValue(valueToPass, lineCategory, "Day " + dayCounter);
+    			}
+    			
+    		}  
+    }
+    if(timeFrame == MONTH)
+    {
+    		
+	for(SubmitData a : userData)
+	{
+		if(getMonth(a.getDate()) == getMonth(currentDate) && getYear(a.getDate()) == getYear(currentDate))
+		{
+			dayCounter++;
+			valueToPass = addLinePoint(a);
+			if(valueToPass >= 0)
+			dataset.addValue(valueToPass, lineCategory, "Day " + dayCounter);
+		}
+		
+	}
     	
     	
-    DefaultCategoryDataset dataset = new 	    DefaultCategoryDataset();
-    dataset.addValue(1.0, "Row 1", "Column 1");
-    dataset.addValue(122.0, "Row 1", "Column 2");
-    dataset.addValue(3.0, "Row 1", "Column 3");
-    dataset.addValue(2.0, "Row 2", "Column 1");
-    dataset.addValue(45.0, "Row 2", "Column 2");
-    dataset.addValue(2.0, "Row 2", "Column 3");
+    }
     
+    	
+   
     //Columns shall be the dates, rows shall be the bpms.... values are where they lie
-    JFreeChart barChart = ChartFactory.createLineChart("line", "line", "line", dataset); //Where each
+    JFreeChart lineChart = ChartFactory.createLineChart(chartTitle, xValue, yValue, dataset); //Where each
        
     //JFreeChart barChart = ChartFactory.createBarChart("test", "cat", "axis", dataset);
  
-    ChartFrame frame = new ChartFrame("Cardio Chart", barChart);
+    ChartFrame frame = new ChartFrame("Cardio Chart", lineChart);
     
     frame.pack();
     frame.setVisible(true);
     }
 
-   
+    public void addActivityNumbers(SubmitData recordPassed)
+    {
+    	   	if (workHoursChecked)
+    	   	{
+    	   		workHours += recordPassed.getWorkHours();
+    	   	}
+   			if (sleepHoursChecked)
+   			{
+   				sleepHours += recordPassed.getSleepHours();
+   			}
+   			if (cardioChecked)
+   			{
+   				System.out.println("Called");
+   				cardioHours = recordPassed.getCardio();
+   				System.out.println(cardioHours);
+   			}
+   			if (strengthChecked)
+   			{
+   				strengthHours = recordPassed.getStrengthTraining();
+   			}
+        	
+   			hoursLeft += 24;
+    }
 	public void returnPieChart() // udpdate to graph
-	{
-	        
-	        /*int DMY = 1; // Day/Month/Year Selection
-	                    // Day = 1, Month = 2, Year = 3
-	        
-	        if (DMY == 1)
-	        {*/
+	{	
+			hoursLeft = 0;
+			workHours = 0;
+			sleepHours = 0;
+			cardioHours = 0;
+			strengthHours = 0;
+			
+			
+	        if(timeFrame == DAY)
+	        {
+	        	for(SubmitData a : userData)
+	        	{
+	        		if(a.getDate().equals(currentDate))
+	        		{
+	        			
+	        			addActivityNumbers(a);
+	        		}
+	        	}
+	        	hoursLeft = hoursLeft - workHours - sleepHours - cardioHours - strengthHours;
+	        }
+	        if(timeFrame == WEEK)
+	        {
+	        	
+	        		for(SubmitData a : userData)
+	        		{
+	        			if((getMonth(a.getDate()) == getMonth(currentDate) &&
+	        					(getDay(a.getDate()) - getDay(currentDate)) >= -7 &&
+	        					(getDay(a.getDate()) - getDay(currentDate)) <= 0 ))
+	        			{
+	        				addActivityNumbers(a);
+	        			}
+	        			hoursLeft +=24;
+	        		}
+	        		hoursLeft = hoursLeft - workHours - sleepHours - cardioHours - strengthHours;
+	       
+	        }
+	        if(timeFrame == MONTH)
+	        {
+
+    		for(SubmitData a : userData)
+    		{
+    			if(getMonth(a.getDate()) == getMonth(currentDate) && getYear(a.getDate()) == getYear(currentDate))
+    			{
+    				addActivityNumbers(a);
+    			}
+    			hoursLeft +=24;
+    		}
+    		hoursLeft = hoursLeft - workHours - sleepHours - cardioHours - strengthHours;
+	        	
+	        	
+	        }
+
 	            DefaultPieDataset dataset = new DefaultPieDataset();
-	            dataset.setValue("Week 1", 43.2);
-	            dataset.setValue("Week 2", 27.9);
-	            dataset.setValue("Week 3", 79.5);
-	            dataset.setValue("Week 4", 19.2);
-	     
+	            
+	        	if (workHoursChecked)
+	    	   	{
+	        		dataset.setValue("Work", workHours);
+	    	   	}
+	   			if (sleepHoursChecked)
+	   			{
+	   			 dataset.setValue("Sleep", sleepHours);
+	   			}
+	   			if (cardioChecked)
+	   			{
+	   			 dataset.setValue("Cardio", cardioHours);
+	   			}
+	   			if (strengthChecked)
+	   			{
+	   				dataset.setValue("Strength", strengthHours);
+	   			}
+	           
+	            
+	           
+	            
+	           dataset.setValue("Hours Left", hoursLeft);
+	           
 	        
 	        JFreeChart chart = ChartFactory.createPieChart(
 	        "Time Spent On Cardio",
@@ -217,14 +409,13 @@ public class Graphing {
 
 
 	        
-	        ChartFrame frame = new ChartFrame("Cardio Chart", chart);
+	        frame = new ChartFrame("Activity Chart", chart);
 	        frame.pack();
 	        frame.setVisible(true);
 	        }
 	       
 	
-
-
+	
 	public void returnGraph()
 	{
 		//update the chart

@@ -38,6 +38,7 @@ import java.awt.Component;
 import javax.swing.Box;
 
 
+
 //import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
 
@@ -475,7 +476,7 @@ public class ActivityFrame extends JFrame
 						                       				checkString(txtCardioInMinutes),
 						                       				checkString(txtStrengthTraining) );
 				// send this record to DataBase
-				
+				System.out.println("Cardio" + txtCardioInMinutes.getText());
 				database.addToData(newSubmitDataObject);
 			
 			}
