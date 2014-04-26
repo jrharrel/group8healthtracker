@@ -191,8 +191,10 @@ public class Graphing {
 	
     	if(calorieIntakeChecked)
     	{
+    		System.out.println( "\n" +dataPassed.getCalorieIntake());
     		return dataPassed.getCalorieIntake();
     	}
+    	System.out.println("nothing is checked");
     	return 0;
 	}
 	
@@ -338,6 +340,7 @@ public class Graphing {
 	        		{
 	        			
 	        			addActivityNumbers(a);
+	        			hoursLeft +=24;
 	        		}
 	        	}
 	        	hoursLeft = hoursLeft - workHours - sleepHours - cardioHours - strengthHours;
@@ -352,8 +355,9 @@ public class Graphing {
 	        					(getDay(a.getDate()) - getDay(currentDate)) <= 0 ))
 	        			{
 	        				addActivityNumbers(a);
+	        				hoursLeft +=24;
 	        			}
-	        			hoursLeft +=24;
+	        			
 	        		}
 	        		hoursLeft = hoursLeft - workHours - sleepHours - cardioHours - strengthHours;
 	       
@@ -366,8 +370,10 @@ public class Graphing {
     			if(getMonth(a.getDate()) == getMonth(currentDate) && getYear(a.getDate()) == getYear(currentDate))
     			{
     				addActivityNumbers(a);
+    				hoursLeft +=24;
     			}
-    			hoursLeft +=24;
+    		
+    			
     		}
     		hoursLeft = hoursLeft - workHours - sleepHours - cardioHours - strengthHours;
 	        	
@@ -392,9 +398,6 @@ public class Graphing {
 	   			{
 	   				dataset.setValue("Strength", strengthHours);
 	   			}
-	           
-	            
-	           
 	            
 	           dataset.setValue("Hours Left", hoursLeft);
 	           
@@ -407,8 +410,6 @@ public class Graphing {
 	        false
 	        );
 
-
-	        
 	        frame = new ChartFrame("Activity Chart", chart);
 	        frame.pack();
 	        frame.setVisible(true);

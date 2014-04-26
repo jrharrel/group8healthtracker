@@ -97,7 +97,7 @@ public class ActivityFrame extends JFrame
 	public ActivityFrame() 
 	{
 		
-		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		Date currentDate = new Date();
 		Calendar testCalendar = Calendar.getInstance();
 		testCalendar.setTime(currentDate);

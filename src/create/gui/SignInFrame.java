@@ -88,7 +88,7 @@ public class SignInFrame extends JFrame
 		//Get the default toolkit  
 		Point hotSpot = new Point(5,5);  
 		Image wizardPointer = null;
-		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		try {
 		    wizardPointer = ImageIO.read(new File("eye.png"));
 		} catch (IOException e) {
